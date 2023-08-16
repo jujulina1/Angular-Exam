@@ -1,0 +1,99 @@
+<section id="register">
+    <div class="container">
+        <form id="register-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <h1>Register</h1>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+
+            <!-- USERNAME -->
+
+            <div class="icons">
+                <p class="heading">Username</p>
+                <label for="username" class="labelIcons"><span><i class="fa-solid fa-user fa-beat-fade"></i></span></label>
+                <input type="text" id="username" formControlName="username" placeholder="Enter your username" name="username" minlength="5">
+            </div>
+
+                 <!-- Username Errors -->
+
+            <ng-container *ngIf="form.get('username')?.touched">
+                <p class="errors" *ngIf="form.get('username')?.errors?.['required']">The Username is Required</p>
+                <p class="errors" *ngIf="form.get('username')?.errors?.['minlength']">The Username must be at least 5 symbols</p>
+            </ng-container>
+
+            <!-- EMAIL -->
+            <div class="icons">
+                <p class="heading">Email</p>
+                <label for="email" class="labelIcons"><span><i class="fa-solid fa-envelope fa-beat-fade"></i></span></label>
+                <input type="email" id="email" formControlName="email" placeholder="Enter your email" name="email">
+            </div>
+
+            <!-- Email Errors -->
+            <ng-container *ngIf="form.get('email')?.touched">
+                <p class="errors" *ngIf="form.get('email')?.errors?.['required']">The Email is Required</p>
+                <p class="errors" *ngIf="form.get('email')?.errors?.['email']">The Email is not Valid</p>
+            </ng-container>
+
+       
+
+            <!-- PASSWORD -->
+            <ng-container formGroupName="pass">
+
+                <div class="icons">
+                    <p class="heading">Password</p>
+                    <label for="password" class="labelIcons"><span><i class="fa-solid fa-key fa-beat-fade"></i></span></label>
+                    <input type="password" id="password" formControlName="password" placeholder="Enter your password" name="password" required minlength="6">
+                </div>
+                <!-- Password Errors -->
+
+                <ng-container *ngIf="form.get('pass')?.get('password')?.touched">
+                    <p class="errors" *ngIf="form.get('pass')?.get('password')?.errors?.['required']">The Password is Required</p>
+                    <p class="errors" *ngIf="form.get('pass')?.get('password')?.errors?.['minlength']">The Password must be at least 6 symbols</p>
+                </ng-container>
+
+
+
+                <!-- RE   PASSWORD   -->
+                <div class="icons">
+                    <p class="heading">Repeat Password</p>
+                    <label for="rePassword" class="labelIcons"><span><i class="fa-solid fa-key fa-beat-fade"></i></span></label>
+                    <input type="password" id="rePassword" formControlName="rePassword" placeholder="Confirm your password" name="repeatPass" required>
+                </div>
+            </ng-container>
+           <!-- Pass Errors -->
+            <ng-container *ngIf="form.get('pass')?.errors?.['matchPass']">
+                <p class="errors">Repeat Password does not match</p>
+            </ng-container>
+
+                 <!-- Gender -->
+                 <div class="icons" id="radioGroup">
+                    <p class="heading">Gender</p>
+    
+                    <div class="wrap">
+                        <input type="radio" formControlName="gender" id="male" name="gender" value="male" >
+                        <label for="male" class="radio">Male</label>
+                    </div>
+                    <div class="wrap">
+                        <input type="radio" formControlName="gender" id="female" name="gender" value="female">
+                        <label for="female" class="radio">Female</label>
+                    </div>
+                    <div class="wrap">
+                        <input type="radio"  formControlName="gender" id="none" name="gender" value="none" >
+                        <label for="none" class="radio">Prefer not to say</label>
+                    </div>
+    
+                </div>
+
+            <hr>
+
+            <input [disabled]="form.invalid" type="submit" class="registerbtn" value="Register">
+
+            <div class="signin">
+                <p>Already have an account?
+                    <a routerLink="/auth/login">Sign in</a>
+                </p>
+            </div>
+        </form>
+
+    </div>
+</section>

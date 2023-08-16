@@ -1,0 +1,87 @@
+<app-spinner *ngIf="loading"></app-spinner>
+<ng-container *ngIf="!loading">
+
+    <section id="edit-listing">
+        <div class="container">
+
+            <form id="edit-form" [formGroup]="formEdit" (ngSubmit)="onSubmit()">
+                <h1>Edit Car Listing</h1>
+                <p>Please fill in this form to edit an listing.</p>
+                <hr>
+                <!-- BRAND -->
+                <div class="icons">
+                    <p class="heading">Car Brand</p>
+                    <input type="text" formControlName="brand" placeholder="Enter Car Brand" name="brand" value="">
+                </div>
+
+                <ng-container *ngIf="formEdit.get('brand')?.touched">
+                    <p *ngIf="formEdit.get('brand')?.errors?.['required']" class="errors">Brand is Required</p>
+                </ng-container>
+
+                <!-- MODEL -->
+                <div class="icons">
+                    <p class="heading">Car Model</p>
+                    <input type="text" formControlName="model" placeholder="Enter Car Model" name="model" value="">
+                </div>
+
+                <ng-container *ngIf="formEdit.get('model')?.touched">
+                    <p *ngIf="formEdit.get('model')?.errors?.['required']" class="errors">Model is Required</p>
+                </ng-container>
+
+                <!-- DESCRIPTION -->
+                <div class="icons">
+                    <p class="heading">Description</p>
+                    <input type="text" formControlName="description" placeholder="Enter Description" name="description"
+                        value="">
+                </div>
+
+                <ng-container *ngIf="formEdit.get('description')?.touched">
+                    <p *ngIf="formEdit.get('description')?.errors?.['required']" class="errors">Description is Required
+                    </p>
+                    <p *ngIf="formEdit.get('description')?.errors?.['minlength']" class="errors">Description must be at
+                        least {{formEdit.get('description')?.errors?.['minlength']['requiredLength']}} characters</p>
+                </ng-container>
+
+
+                <!-- YEAR -->
+                <div class="icons">
+                    <p class="heading">Car Year</p>
+                    <input type="number" formControlName="year" placeholder="Enter Car Year" name="year" value="">
+                </div>
+
+                <ng-container *ngIf="formEdit.get('year')?.touched">
+                    <p *ngIf="formEdit.get('year')?.errors?.['required']" class="errors">Year is Required</p>
+                    <p *ngIf="formEdit.get('year')?.errors?.['min']" class="errors">The Year must be after 1990</p>
+                    <p *ngIf="formEdit.get('year')?.errors?.['max']" class="errors">The Year must not be up to 2023</p>
+                </ng-container>
+
+
+                <!-- IMAGE -->
+                <div class="icons">
+                    <p class="heading">Car Image</p>
+                    <input type="text" formControlName="image" placeholder="Enter Car Image" name="imageUrl" value="">
+                </div>
+
+                <ng-container *ngIf="formEdit.get('image')?.touched">
+                    <p *ngIf="formEdit.get('image')?.errors?.['required']" class="errors">Photo is Required</p>
+                    <p *ngIf="formEdit.get('image')?.errors?.['pattern']" class="errors">Photo must starts with http or
+                        https </p>
+                </ng-container>
+
+                <!-- PRICE-->
+                <div class="icons">
+                    <p class="heading">Car Price</p>
+                    <input type="number" formControlName="price" placeholder="Enter Car Price" name="price" value="">
+                </div>
+                <ng-container *ngIf="formEdit.get('price')?.touched">
+                    <p *ngIf="formEdit.get('price')?.errors?.['required']" class="errors">Price is Required</p>
+                </ng-container>
+
+
+
+                <hr>
+                <input [disabled]="formEdit.invalid" type="submit" class="registerbtn" value="Edit Listing">
+            </form>
+        </div>
+    </section>
+</ng-container>

@@ -1,0 +1,24 @@
+<app-spinner *ngIf="loading"></app-spinner>
+<ng-container *ngIf="!loading">
+    <section id="listing-details">
+        <h1>Details</h1>
+        <div class="details-info">
+            <img src="{{car?.image}}">
+            <hr>
+            <ul class="listing-props">
+                <li><span>Brand:</span>{{car?.brand}}</li>
+                <li><span>Model:</span>{{car?.model}}</li>
+                <li><span>Year:</span>{{car?.year}}</li>
+                <li><span>Price:</span>{{car?.year}}$</li>
+                <li><span>Price:</span>{{car?._id}}$</li>
+            </ul>
+
+            <p class="description-para">{{car?.description}}</p>
+
+            <div class="listings-buttons" *ngIf="isLogin">
+                <a routerLink="/data/edit/{{car?._id}}" (click)="onEdit()" class="button-list">Edit</a>
+                <a routerLink="/data/delete/{{car?._id}}" (click)="onDelete()" class="button-list">Delete</a>
+            </div>
+        </div>
+    </section>
+</ng-container>

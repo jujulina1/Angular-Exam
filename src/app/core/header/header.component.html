@@ -1,0 +1,20 @@
+<header>
+    <nav>
+        <a class="active" routerLink="/home">Home</a>
+        <a routerLink="/data/catalog">All Listings</a>
+        <a routerLink="/data/year">By Year</a>
+        <!-- Guest users -->
+        <div id="guest" *ngIf="!isLoggedIn">
+            <a routerLink="/auth/login">Login</a>
+            <a routerLink="/auth/register">Register</a>
+      </div>
+        <!-- Logged users -->
+        <div id="profile" *ngIf="isLoggedIn">
+
+            <a routerLink="/auth/profile/{{user?._id}}">Welcome {{user?.username}}</a>
+            <a routerLink="/data/mycars">My Listing</a>
+            <a routerLink="/data/create">Create Listing</a>
+            <a routerLink="/auth/logout">Logout</a>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,102 @@
+<!-- PROFILE -->
+<app-spinner *ngIf="loading"></app-spinner>
+<ng-container *ngIf="view && !loading" >
+
+    <section id="myprofile">
+        <div class="container">
+
+            <div class="profile"><img [src]="avatar" alt="default user">
+                <h2>User Info:</h2>
+
+                <div class="icons">
+                    <p>Username: </p>
+                    <p>{{user?.username}}</p>
+                </div>
+                <div class="icons">
+                    <p>Email: </p>
+                    <p>{{user?.email}}</p>
+                </div>
+
+                <div class="icons">
+                    <p>Gender: </p>
+                    <p>{{user?.gender}}</p>
+                </div>
+
+                <input (click)="onClick()" type="submit" class="registerbtn" value="Edit">
+
+            </div>
+
+        </div>
+    </section>
+</ng-container>
+<!-- EDIT PROFILE -->
+ <ng-container *ngIf="!view && !loading"> 
+    <section id="myprofile">
+        <div class="container">
+            <form [formGroup]="formMyProfile" (ngSubmit)="onSubmit()">
+                <div class="profile"><img [src]="avatar" alt="default user">
+                    <h2>User Info:</h2>
+
+                    <!-- USERNAME -->
+                    <div class="icons">
+
+                        <!-- <label for="username" class="labelIcons">Username:</label> -->
+                        <p class="label">Username:</p>
+                        <input type="text" id="username" formControlName="username" placeholder="Enter your username"
+                            name="username" minlength="5">
+                    </div>
+
+                    <!-- Username Errors -->
+
+                    <ng-container *ngIf="formMyProfile.get('username')?.touched">
+                        <p class="errors" *ngIf="formMyProfile.get('username')?.errors?.['required']">The Username is
+                            Required</p>
+                        <p class="errors" *ngIf="formMyProfile.get('username')?.errors?.['minlength']">The Username must
+                            be at least 5 symbols</p>
+                    </ng-container>
+
+                    <!-- EMAIL -->
+                    <div class="icons">
+
+                        <!-- <label for="email" class="labelIcons">Email:</label> -->
+                        <p class="label">Email:</p>
+                        <input type="email" id="email" formControlName="email" placeholder="Enter your email"
+                            name="email">
+                    </div>
+
+                    <!-- Email Errors -->
+                    <ng-container *ngIf="formMyProfile.get('email')?.touched">
+                        <p class="errors" *ngIf="formMyProfile.get('email')?.errors?.['required']">The Email is Required
+                        </p>
+                        <p class="errors" *ngIf="formMyProfile.get('email')?.errors?.['email']">The Email is not Valid
+                        </p>
+                    </ng-container>
+
+                    <!-- Gender -->
+
+                    <div class="icons" id="radioGroup">
+                        <p class="heading">Gender:</p>
+
+                        <div class="wrap">
+                            <input type="radio" formControlName="gender" id="male" name="gender" value="male">
+                            <label for="male" class="radio">Male</label>
+                        </div>
+                        <div class="wrap">
+                            <input type="radio" formControlName="gender" id="female" name="gender" value="female">
+                            <label for="female" class="radio">Female</label>
+                        </div>
+                        <div class="wrap">
+                            <input type="radio" formControlName="gender" id="none" name="gender" value="none">
+                            <label for="none" class="radio">None</label>
+                        </div>
+
+                    </div>
+
+                    <input (click)="onClick()" type="button" id="cancelbtn" value="Cancel">
+                    <input type="submit" [disabled]="formMyProfile.invalid" class="registerbtn" value="Save">
+
+                </div>
+            </form>
+        </div>
+    </section>
+</ng-container>

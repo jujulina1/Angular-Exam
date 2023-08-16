@@ -1,0 +1,44 @@
+<section id="login">
+    <div class="container">
+       
+        <form #formLogin="ngForm" (ngSubmit)="onSubmit(formLogin)">
+
+            <h1>Login</h1>
+            <p>Please enter the fields to login.</p>
+            <hr>
+            <!-- USERNAME -->
+            <div class="icons">
+                <p class="heading">Username</p>
+                <label for="username"><span><i class="fa-solid fa-user fa-beat-fade"></i></span></label>
+                <input type="text" id="username" #usernameInput="ngModel" placeholder="Enter your username" name="username" ngModel required minlength="5">
+            </div>
+            <ng-container *ngIf="usernameInput.touched">
+                <p class="errors" *ngIf="usernameInput.errors?.['required']">The Username is Required</p>
+                <p class="errors" *ngIf="usernameInput.errors?.['minlength']">The Username must be at least 5 symbols</p>
+            </ng-container>
+
+            <!-- PASSWORD -->
+            <div class="icons">
+                <p class="heading">Password</p>
+                <label for="password"><span><i class="fa-solid fa-key fa-beat-fade"></i></span></label>
+                <input type="password" id="password" #passInput="ngModel"  placeholder="Enter your password" name="password" ngModel required>
+             
+            </div>
+            <ng-container *ngIf="passInput.touched">
+                <p class="errors" *ngIf="passInput.errors?.['required']">The Password is Required</p>
+            </ng-container>
+            <hr>
+
+            <input [disabled]="formLogin.invalid"   type="submit" class="registerbtn" value="Login">
+
+            <div class="signin">
+                <p>Dont have an account?
+                    <a routerLink="/auth/register">Sign up</a>.
+                </p>
+            </div>
+         </form>
+       
+       
+    </div>
+</section>
+

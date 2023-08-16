@@ -1,0 +1,151 @@
+.container {
+    border: 5px solid #4CAF50;
+    border-radius: 50px;
+    background-color: white;
+    padding: 16px;
+    text-align: center;
+    width: 500px;
+    margin: auto;
+ 
+}
+.profile {
+    width: 100%;
+    max-width: 500px;
+    margin: 2em auto 1rem;
+    padding: .5em;
+    color: #444;
+    text-align: center;
+}
+
+
+.profile img {
+    border-radius: 70px;
+    width: 9em;
+    height: 9em;
+    margin: auto;
+    display: block;
+}
+.icons {
+    display: flex;
+}
+
+.icons p:first-child {
+    width: 35%;
+    text-align: right;
+    margin: .5em;
+}
+
+.icons p:last-child {
+    width: 55%;
+    text-align: left;
+    margin: .5em;
+    font-weight: bold;
+}
+
+
+.registerbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.registerbtn:hover {
+    opacity: 1;
+}
+
+.signin {
+    padding: 16px;
+    background-color: #f1f1f1;
+    text-align: center;
+  
+}
+/* FORM */
+input[type="text"], input[type="number"], input[type="password"], input[type="email"]{
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    width: 100%;
+    border: 1px solid;
+    background: #f1f1f1;
+    box-sizing: border-box;
+    border-top-right-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+    
+ 
+}
+#radioGroup{
+ 
+    height: 50px;
+    width: 500px;
+    position: relative;
+    right: 80px;
+    padding-right: 40px;
+    
+}
+#radioGroup .wrap {
+    display: inline-block;
+    margin-top: 20px;
+     margin-right:20px;
+    
+ 
+}
+/* only for radio buton label */
+#radioGroup label {
+    color: #444;
+    position: relative;
+    top: 2px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+#radioGroup input[type="radio"]{
+ margin-right: 10px;
+ 
+}
+/* radio button heading - Gender ------ok*/ 
+p.heading {
+ 
+    position: relative;
+    right: 10px;
+    top: 12px;
+
+}
+
+.icons {
+    position: relative;
+    right: 40px;
+}
+input.ng-valid {
+    border-left: 0.3em solid green;
+}
+input.ng-invalid {
+    border-left: 0.3em solid red;
+}
+
+input[type="text"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="email"]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+#cancelbtn {
+
+    background-color: red;
+    color: white;
+    padding: 16px 15px;
+    margin: 8px 10px;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+    
+}
+/* ERRORS */
+.errors {
+    color: red;
+    border: 2px solid red;
+    border-radius:  0.3em;
+    padding: 10px;
+}
