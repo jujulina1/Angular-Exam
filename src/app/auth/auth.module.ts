@@ -21,8 +21,7 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     MyProfileComponent,
     AuthenticateComponent,
     
-    
-
+   
   ],
   imports: [
     CommonModule,
