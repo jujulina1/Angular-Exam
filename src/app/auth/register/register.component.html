@@ -61,8 +61,8 @@
                 </div>
             </ng-container>
            <!-- Pass Errors -->
-            <ng-container *ngIf="form.get('pass')?.errors?.['matchPass']">
-                <p class="errors">Repeat Password does not match</p>
+            <ng-container *ngIf="form.get('pass')?.touched">
+                <p class="errors" *ngIf="form.get('pass')?.errors?.['matchPass']">Repeat Password does not match</p>
             </ng-container>
 
                  <!-- Gender -->
