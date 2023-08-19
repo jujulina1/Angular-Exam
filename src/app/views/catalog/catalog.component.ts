@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ViewsService } from '../views.service';
 import { ICar } from 'src/app/shared/interfaces/car';
 import { Router } from '@angular/router';
@@ -8,16 +8,15 @@ import { Router } from '@angular/router';
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css']
 })
-export class CatalogComponent {
+export class CatalogComponent implements OnInit{
 
 
   cars: ICar[] | any = null;
   view!: boolean
   loading: boolean = true;
 
-  constructor(private viewService: ViewsService, private router: Router) {
-
-
+  constructor(private viewService: ViewsService, private router: Router) {}
+  ngOnInit(): void {
     this.viewService.getAllCars().subscribe({
       next: (cars) => { this.cars = cars },
       error: (err) => {
@@ -37,7 +36,5 @@ export class CatalogComponent {
 
       }
     });
-
   }
 }
-//`https://images.unsplash.com/photo-1532974297617-c0f05fe48bff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80`

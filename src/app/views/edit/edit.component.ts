@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ICar } from 'src/app/shared/interfaces/car';
 import { ViewsService } from '../views.service';
@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent {
+export class EditComponent implements OnInit{
 
 
   car!: ICar | null;
@@ -30,25 +30,22 @@ export class EditComponent {
 
 
     this.carId = route.snapshot.params['id'];
-
+}
+  ngOnInit(): void {
+    
     this.viewsService.getCarById(this.carId).subscribe({
       next: (car) => { this.car = car },
       error: (err) => {
-        //TO DO ERROR
+      
         window.alert(`${err.message}`);
         this.router.navigate(['/data/catalog']);
-       
-
-      },
+     },
       complete: () => {
-        
-
         const { brand, model, description, year, image, price } = this.car!
         this.setForm(brand, model, description, year, image, price);
         this.loading = false;
       }
     });
-
   }
   onSubmit() {
     

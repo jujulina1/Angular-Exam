@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -8,12 +8,10 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./logout.component.css']
 })
 
-export class LogoutComponent {
+export class LogoutComponent implements OnInit{
   
-  constructor(private router: Router, private authSevrice: AuthService){
-
-   
-    
+  constructor(private router: Router, private authSevrice: AuthService){}
+  ngOnInit(): void {
     this.authSevrice.logout().subscribe({
       next: () => {
         AuthService.user = null;
@@ -25,7 +23,7 @@ export class LogoutComponent {
         AuthService.isLoggedIn = false;
         this.router.navigate(['/auth/login'])
       }
-    })
+    });
   }
 
 }

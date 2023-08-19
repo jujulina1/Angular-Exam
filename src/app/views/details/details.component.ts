@@ -24,16 +24,14 @@ export class DetailsComponent implements OnInit {
 
   constructor(private viewsService: ViewsService, private router: Router, private route: ActivatedRoute) {
 
-    this.user = AuthService.user
+    this.user = AuthService.user;
+    this.carId = this.route.snapshot.params['id'];
 
   }
   ngOnInit(): void {
 
 
-    this.carId = this.route.snapshot.params['id'];
-
-
-    //1> If we dont have user
+  //1> If we dont have user
     if (!this.user) {
       this.isLogin = false;
     }

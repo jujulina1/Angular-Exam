@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewsService } from '../views.service';
 
@@ -8,7 +8,7 @@ import { ViewsService } from '../views.service';
   templateUrl: './delete.component.html',
   styleUrls: ['./delete.component.css']
 })
-export class DeleteComponent {
+export class DeleteComponent implements OnInit{
 
   carId!: string
 
@@ -16,7 +16,8 @@ export class DeleteComponent {
 
 
     this.carId = route.snapshot.params['id'];
-
+ }
+  ngOnInit(): void {
     this.viewsService.deleteCar(this.carId).subscribe({
 
       error: (err) => {
@@ -28,11 +29,8 @@ export class DeleteComponent {
       complete: () => {
         window.alert(`Successful delete a car`);
         this.router.navigate(['/data/catalog']);
-
-
-      }
+ }
     });
-
   }
 
 }

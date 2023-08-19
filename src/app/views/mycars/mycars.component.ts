@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ICar } from 'src/app/shared/interfaces/car';
 import { ViewsService } from '../views.service';
 import { Router } from '@angular/router';
@@ -8,13 +8,14 @@ import { Router } from '@angular/router';
   templateUrl: './mycars.component.html',
   styleUrls: ['./mycars.component.css']
 })
-export class MycarsComponent {
+export class MycarsComponent implements OnInit{
   cars: ICar[] | any = null;
   view!: boolean
   loading: boolean = true;
 
 
-  constructor(private viewsService: ViewsService, private router: Router) {
+  constructor(private viewsService: ViewsService, private router: Router) {}
+  ngOnInit(): void {
     this.viewsService.getMyCars().subscribe({
       next: (cars) => { this.cars = cars },
       error: (err) => { 
