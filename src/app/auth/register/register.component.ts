@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+
 import { matchPass } from 'src/app/shared/validators/match-passwords';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
