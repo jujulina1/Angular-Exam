@@ -40,7 +40,7 @@
                     <!-- USERNAME -->
                     <div class="icons">
 
-                        <!-- <label for="username" class="labelIcons">Username:</label> -->
+                        
                         <p class="label">Username:</p>
                         <input type="text" id="username" formControlName="username" placeholder="Enter your username"
                             name="username" minlength="5">
@@ -48,24 +48,23 @@
 
                     <!-- Username Errors -->
 
-                    <ng-container *ngIf="formMyProfile.get('username')?.touched">
+                     <ng-container *ngIf="formMyProfile.get('username')?.invalid"> 
                         <p class="errors" *ngIf="formMyProfile.get('username')?.errors?.['required']">The Username is
                             Required</p>
                         <p class="errors" *ngIf="formMyProfile.get('username')?.errors?.['minlength']">The Username must
                             be at least 5 symbols</p>
-                    </ng-container>
+                      </ng-container> 
 
                     <!-- EMAIL -->
                     <div class="icons">
 
-                        <!-- <label for="email" class="labelIcons">Email:</label> -->
                         <p class="label">Email:</p>
                         <input type="email" id="email" formControlName="email" placeholder="Enter your email"
                             name="email">
                     </div>
 
                     <!-- Email Errors -->
-                    <ng-container *ngIf="formMyProfile.get('email')?.touched">
+                    <ng-container *ngIf="formMyProfile.get('email')?.invalid">
                         <p class="errors" *ngIf="formMyProfile.get('email')?.errors?.['required']">The Email is Required
                         </p>
                         <p class="errors" *ngIf="formMyProfile.get('email')?.errors?.['email']">The Email is not Valid
